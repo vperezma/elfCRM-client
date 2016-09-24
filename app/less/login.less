@@ -1,0 +1,85 @@
+@imew-green: #28b29a;
+
+
+.login {
+    min-height: 100vh;
+
+    h1, h2 {
+        display: inline-block;
+        margin: 1em 0;
+        line-height: 1.8em;
+        font-family: inherit;
+        font-size: 1.3rem;
+    }
+    h1 {
+        padding-right: 0.7em;
+        font-weight: 700;
+    }
+    h2 {
+        padding-left: 0.7em;
+        font-weight: 400;
+        border-left: 2px solid #666;
+    }
+    p {
+        margin-top: 1.5rem !important;
+        margin-bottom: 0 !important;
+    }
+    a.btn,
+    button {
+        margin-top: 1rem;
+    }
+    md-checkbox {
+        .md-container {
+            margin-left: 7px;
+        }
+        .md-label {
+            margin-left: 49px;
+        }
+    }
+    md-icon {
+        margin: 0;
+        font-size: 2.2rem;
+    }
+    md-input-container:not(.md-input-invalid).md-input-focused {
+        label {
+            color: @imew-green;
+        }
+        .md-input {
+            border-color: @imew-green;
+        }
+    }
+    .layout-row {
+        margin-bottom: 1rem;
+    }
+    .panel {
+        min-width: 350px;
+        padding: 20px;
+        box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    }
+    .input-field {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .danger{
+        color: red;
+        padding: 5px 10px;
+        background-color: lighten(red, 30%);
+        border-radius: 2px;
+    }
+}
+
+#reset-text {
+    h1, h2{
+        margin: 0!important;
+    }
+    p{
+        margin-top: 0!important;
+        margin-bottom:2em!important;
+        text-align: center;
+    }
+    .resetPasswordIcon {
+        font-size: 2em !important;
+        margin: 5px 0 0 20px !important;
+    }
+
+}

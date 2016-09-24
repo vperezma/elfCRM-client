@@ -1,0 +1,764 @@
+//// Variables
+
+// Colors
+// @primary: #26a69a;
+@imew-blue:#194556;
+@imew-green: #28b29a;
+@imew-green-darken-1: #229984;
+
+// Typography
+@font-family-body: "Open Sans", sans-serif;
+@font-family-heading: "Roboto Slab", serif;  // Or Raleway for sans-serif option?
+@font-family-form-field: "Source Code Pro", monospace;
+
+@font-size-base: 16px;  // Materialize default is 15px
+@font-size-h1: 2rem;  // Materialize default is 4.2rem
+@font-size-h2: 1.7rem;  // Materialize default is 3.56rem
+@font-size-h3: 1.525rem;  // Materialize default is 2.92rem
+@font-size-h4: 1.35rem;  // Materialize default is 2.28rem
+@font-size-h5: 1.175rem;  // Materialize default is 1.64rem
+@font-size-h6: 1rem;  // Materialize default is 1rem
+@font-size-form-label: 0.8rem;  // Materialize default is .8rem
+
+@font-color: #000;  // Default is rgba(0,0,0,0.87)
+@font-input-color: @font-color;  // Default is rgba(0,0,0,0.87)
+@font-input-placeholder-color: rgba(0,0,0,0.5);  // Default is rgba(0,0,0,0.25)
+@font-input-disabled-color: rgba(0,0,0,0.65);  // Default is rgba(0,0,0.0.54)
+
+
+
+
+// TODO: Temporary styles
+// We're not using field errors at the moment, so hide the extra spacer divs
+md-input-container .md-errors-spacer {
+    display: none;
+}
+
+
+// General stuff
+html {
+    color: @font-color;
+    font-family: @font-family-body;
+    font-size: @font-size-base;
+}
+body {
+    background-color: @imew-blue;
+    color: @font-color;
+}
+header {
+    z-index: 99999;
+
+}
+a {
+    text-decoration: none;
+    color: #039be5;
+}
+@heading-margin-top-divisor: 1.7;  // Materialize default is 2
+@heading-margin-bottom-divisor: 2;  // Materialize default is 2.5
+h1 { font-size: @font-size-h1; line-height: 110%; margin: (@font-size-h1 / @heading-margin-top-divisor) 0 (@font-size-h1 / @heading-margin-bottom-divisor);}
+h2 { font-size: @font-size-h2; line-height: 110%; margin: (@font-size-h2 / @heading-margin-top-divisor) 0 (@font-size-h2 / @heading-margin-bottom-divisor);}
+h3 { font-size: @font-size-h3; line-height: 110%; margin: (@font-size-h3 / @heading-margin-top-divisor) 0 (@font-size-h3 / @heading-margin-bottom-divisor);}
+h4 { font-size: @font-size-h4; line-height: 110%; margin: (@font-size-h4 / @heading-margin-top-divisor) 0 (@font-size-h4 / @heading-margin-bottom-divisor);}
+h5 { font-size: @font-size-h5; line-height: 110%; margin: (@font-size-h5 / @heading-margin-top-divisor) 0 (@font-size-h5 / @heading-margin-bottom-divisor);}
+h6 { font-size: @font-size-h6; line-height: 110%; margin: (@font-size-h6 / @heading-margin-top-divisor) 0 (@font-size-h6 / @heading-margin-bottom-divisor);}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    font-family: @font-family-heading;
+
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+ul {
+    padding: 0;
+}
+input,
+select,
+textarea.materialize-textarea,
+.dropdown-content {
+    font-family: @font-family-form-field;
+    font-size: 1em !important;
+}
+label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+img.responsive-img {
+    max-width: 100%;
+    height: auto;
+}
+
+md-icon.right {
+    margin-left: 15px;
+}
+.md-button {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.md-button[disabled]:not(.md-datepicker-button) {
+    background-color: #ccc !important;
+    color: #999 !important;
+}
+a.md-button.md-default-theme.md-raised[disabled],
+a.md-button.md-raised[disabled],
+a.md-button.md-default-theme.md-fab[disabled],
+a.md-button.md-fab[disabled],
+.md-button.md-default-theme.md-raised[disabled],
+.md-button.md-raised[disabled],
+.md-button.md-default-theme.md-fab[disabled],
+.md-button.md-fab[disabled] {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}
+//disabling grey circle on datepicker that lingers around when it's not wanted
+md-datepicker button:not([disabled]).md-focused{
+    background-color: rgba(0, 0, 0, 0.0)!important;
+}
+
+.md-button.md-accent.md-raised:not([disabled]) {
+    background-color: @imew-blue;
+}
+.md-button.md-accent.md-raised:not([disabled]):hover {
+    background-color: @imew-blue !important;
+}
+
+.md-button.square-button {
+    // The height of these buttons is 36px
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+}
+.md-button.square-button:not([disabled]) {
+    color: #fff;
+
+    md-icon {
+        color: #fff;
+    }
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+// Toolbar
+md-toolbar,
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: @imew-blue !important;
+    color: #fff;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: @font-family-body;
+    }
+
+    .brand-image {
+        // max-height: 34px;
+        height: 34px;
+    }
+    .md-button,
+    .md-button:first-child {
+        padding: 0;
+        margin: 0 1.5em 0 0;
+    }
+    .md-fab {
+        &.md-mini {
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+        }
+    }
+    .md-fab:not([disabled]),
+    .md-fab:not([disabled]):hover,
+    .md-fab:not([disabled]).md-focused {
+        background-color: @imew-green-darken-1;
+    }
+    .md-menu {
+        margin: 0;
+    }
+    .page-title {
+        font-size: 1.6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    md-icon.fullscreen-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+    }
+}
+
+.menu-icon{
+    min-height: 36px !important;
+    min-width: 34px !important;
+    line-height: 36px !important;
+}
+
+// Sidenav
+md-sidenav {
+    max-width: 240px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+    p {
+        margin: 0;
+    }
+    ul {
+        margin: 0;
+    }
+
+    md-menu-content {
+        padding: 0;  // Default was 8px 0
+        max-height: 100vh;  // Default was 304px;
+    }
+
+    md-menu-item > .md-button p {
+        margin: auto 0;  // Default is auto
+    }
+
+    .active {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+    .divider {
+        margin: 20px 0 5px;
+        padding: 5px 20px;
+        border-top: 1px solid #e0e0e0;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .user-details {
+        padding: 15px;
+        background-color: #28b29a !important;
+        background-image: linear-gradient(#1b5faa, transparent);
+        text-shadow: 1px 1px 1px #444;
+
+        a {
+            color: #fff !important;
+        }
+        .avatar {
+            //
+        }
+        .details {
+            margin-left: 10px;
+
+            p + p {
+                margin-top: 5px;
+            }
+            .username {
+                font-weight: 600;
+            }
+            .user-role {
+                color: #fff;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+.grey-text.text-lighten-5 {
+    color: #fafafa !important;
+}
+.layout-row {
+    .layout-col {
+        padding: 0 0.75rem;
+    }
+}
+
+
+
+.margin-top-10 {
+    margin-top: 10px !important;
+}
+
+.margin-top-20 {
+    margin-top: 180px !important;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px !important;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px !important;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-left-20 {
+    margin-left: 20px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-right-20 {
+    margin-right: 20px;
+}
+
+//.primary-panel,
+//.secondary-panel,
+//.tertiary-panel,
+//.quaternary-panel {
+//    .layout-row + .layout-row {
+//        margin-top: 1em;
+//    }
+//}
+.primary-panel {
+    background-color: #fff;
+    padding: 20px;
+}
+.secondary-panel {
+    background-color: #fff8e1;
+    padding: 20px;
+}
+.tertiary-panel {
+    background-color: #e9faf7;
+    padding: 20px;
+}
+.quaternary-panel {
+    background-color: #e5effb;
+    padding: 20px;
+}
+
+.border-bottom {
+    border-bottom:1px solid #f1f1f1;
+}
+
+
+footer.page-footer {
+    margin-top: 0;
+    padding-top: 0;
+    background-color: @imew-blue;
+    height: 48px;
+
+    span {
+        color: #fff;
+        opacity: 0.8;
+        margin: 0 15px;
+
+        &.footer-version,
+        &.footer-credit {
+            // Credit in footer should be less opaque
+            opacity: 0.45;
+        }
+    }
+}
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+.site-content {
+    // margin-top: 64px;
+    margin: 64px 1.5rem 1rem 1.5rem;
+    flex: 1;
+}
+
+.fixed-to-top {
+    position: fixed;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form-actions {
+    margin-top: 1em;
+    border-top: 1px solid #f1f1f1;
+}
+
+// Angular Material overrides
+md-datepicker.md-default-theme, md-datepicker {
+    background: transparent;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.md-datepicker-input-container {
+    margin-left: 0;  // Default is 12px
+    padding-bottom: 0;  // Default is 5px
+}
+
+md-input-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+md-autocomplete.md-default-theme, md-autocomplete {
+    background: none !important;
+}
+
+md-autocomplete-wrap {
+    box-shadow: none !important;
+}
+
+.dialog {
+    padding-right: 10px;
+    padding-left: 10px;
+    .dialog-content {
+        padding: 20px 0;
+    }
+}
+
+.md-primary {
+    background-color: @imew-green-darken-1 !important;
+}
+
+.md-danger {
+    color: #fff !important;
+    background-color: #DE3641 !important;
+}
+
+.input-margin {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+// .examinee-form md-checkbox .md-label {
+//     margin-top: 15px !important;
+// }
+
+.panel {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.edit-input {
+    background-color: rgba(255,242,0,0.2) !important;
+}
+
+// Table-styling
+.full-width-table {
+    width: 100%;
+}
+td {
+     text-align: center;
+    //border-right: 1px solid #f1f1f1;
+    padding: 10px 0;
+    padding: 10px;
+    md-checkbox {
+        margin-bottom: 0;
+    }
+}
+
+.siteNav {
+    z-index: 999999;
+}
+
+.admin-tile {
+    border: 1px solid gainsboro;
+    transition: all 0.1s ease;
+    cursor: pointer!important;
+
+    md-icon {
+        height: 100%;
+        width: 100%;
+        margin-bottom: 48px;
+        font-size: 5rem;
+    }
+}
+
+.admin-tile:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.32), 0 2px 10px 0 rgba(0, 0, 0, 0.24);
+}
+.centerTileSpan {
+    // padding-left: 20px;
+}
+
+// centering title on panels in crud admin view
+.tilebkg figcaption{
+  margin: 0 auto!important;
+}
+
+.tilebkg {
+    background-color: @imew-blue;
+}
+
+
+// Fix for select list overflow
+.md-select-value *:first-child {
+    width: calc(100% - 24px);
+}
+
+// Reserved appointment styling
+.reserved {
+    border: 1px solid red;
+    background-color: lighten(red, 50%);
+}
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+
+// md-radio styling override
+md-radio-button {
+    margin-bottom: 0;
+}
+
+// Form input text colors
+
+// Placeholder colors
+*::-webkit-input-placeholder {
+    color: @font-input-placeholder-color;
+}
+*:-moz-placeholder {
+    // FF 4-18
+    color: @font-input-placeholder-color;
+}
+*::-moz-placeholder {
+    // FF 19+
+    color: @font-input-placeholder-color;
+}
+*:-ms-input-placeholder {
+    // IE 10+
+    color: @font-input-placeholder-color;
+}
+md-input-container {
+    & .md-default-theme .md-input,
+    .md-input {
+        color: @font-input-color;  // Default is rgba(0,0,0,0.87)
+    }
+    & .md-default-theme > md-icon,
+    > md-icon {
+        color: @font-input-color;  // Default is rgba(0,0,0,0.87)
+    }
+    & .md-default-theme .md-input::-webkit-input-placeholder,
+    .md-input::-webkit-input-placeholder,
+    & .md-default-theme .md-input::-moz-placeholder,
+    .md-input::-moz-placeholder,
+    & .md-default-theme .md-input:-moz-placeholder,
+    .md-input:-moz-placeholder,
+    & .md-default-theme .md-input:-ms-input-placeholder,
+    .md-input:-ms-input-placeholder {
+        color: @font-input-placeholder-color;  // Default is rgba(0,0,0,0.26)
+    }
+    & .md-default-theme > md-icon,
+    > md-icon {
+        color: @font-input-color;  // Default is rgba(0,0,0,0.87)
+    }
+    // Darker label font color
+    & .md-default-theme label,
+    label,
+    & .md-default-theme .md-placeholder,
+    .md-placeholder {
+        color: @font-input-placeholder-color;  // Default is rgba(0,0,0,0.26)
+    }
+    // Darker label font color when field is populated
+    & .md-default-theme:not(.md-input-invalid).md-input-has-value label,
+    & :not(.md-input-invalid).md-input-has-value label {
+        color: @font-input-disabled-color;  // Default is rgba(0,0,0,0.54)
+    }
+    // Darker color font for disabled inputs
+    & .md-default-theme .md-input[disabled],
+    .md-input[disabled],
+    & .md-default-theme .md-input [disabled],
+    .md-input [disabled] {
+        color: @font-input-disabled-color;
+    }
+}
+md-checkbox.md-default-theme[disabled] .md-label,
+md-checkbox[disabled] .md-label {
+    color: @font-input-disabled-color;
+}
+md-checkbox.md-default-theme[disabled] .md-icon,
+md-checkbox[disabled] .md-icon {
+    color: @font-input-disabled-color;
+}
+md-select.md-default-theme[disabled] .md-select-value,
+md-select[disabled] .md-select-value {
+    color: @font-input-disabled-color;
+}
+md-select.md-default-theme .md-select-value.md-select-placeholder,
+md-select .md-select-value.md-select-placeholder {
+    color: @font-input-placeholder-color;
+}
+md-select.md-default-theme[disabled] .md-select-value.md-select-placeholder,
+md-select[disabled] .md-select-value.md-select-placeholder {
+    color: @font-input-placeholder-color;
+}
+
+
+// override label font color, make darker
+md-input-container.md-default-theme label, md-input-container label, md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder {
+    color: rgba(0,0,0,0.70);
+}
+
+
+//override label font color when field is populated, make darker
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
+    color: rgba(0,0,0,0.70);
+}
+
+
+md-dialog{
+    max-height: 75% !important;
+}
+
+#overlay {
+    display: none;
+    background-color: black;
+    position: fixed;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    opacity: 0.5; /* also -moz-opacity, etc. */
+}
+
+.email-wrap {
+    word-wrap: break-word;
+}
+
+.md-warn{
+    background-color: @imew-blue !important;
+}
+
+/*Required label on forms */
+.req-span{
+  float: left;
+  font-size: 1em;
+  color: rgb(200, 50, 10);
+}
+.separator-bottom{
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.field-invalid{
+    box-shadow: 0px 0px 5px red;
+}
+
+.loading-spinner{
+    position: absolute;
+    z-index: 999999999;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%
+}
+
+.delicon{
+  font-size: 2em;
+  color: #DE3641;
+  cursor: pointer;
+}
+
+.editicon{
+  font-size: 2em;
+  color: #1b5faa;
+  cursor: pointer;
+}
+
+.iag-delicon{
+    font-size: 2em;
+    color: #DE3641;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.square-icon-button {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
+
+    md-icon {
+        width: 24px;
+        height: 24px;
+        vertical-align: inherit;
+        color: #fff !important;
+        font-size: 24px !important;
+        line-height: 36px !important;
+    }
+}
+
+.square-icon-button-lg {
+    .square-icon-button;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    min-height: 48px;
+
+    md-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 32px !important;
+        line-height: 48px !important;
+    }
+}
+
+.redIcon {
+    border-radius: 30%;
+    padding: 1px;
+    color: white !important;
+    background-color: #de3641;
+}
+
+md-badge {
+  margin: 0 0 0 8px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background-color: #de3641;
+  color: #fff;
+  font-weight: bold;
+}
+
+.noPadding{
+    padding: 0;
+}
+
+.tableIcon {
+    font-size: 1.2em;
+    margin: 0 5px 15px 0;
+    //color:#19599F;
+}
+
+md-tooltip{
+    font-size: 16px;
+}
+#nav-buttons{
+    .nav-button{
+        min-width: 40px;
+        padding-right: 15px;
+    }
+
+    .navIcon{
+        font-size: 2.5em;
+        margin-bottom:15px;
+    }
+}
+.md-tooltip-nav{
+    font-size: 12px!important;
+    z-index: 9999999;
+}
+
+.admin-button{
+    //margin-left: 10px!important;
+}
+.adminIcon{
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    width: 40px;
+}
+.greeting{
+    margin-right: 10px;
+}

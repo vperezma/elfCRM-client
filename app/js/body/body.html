@@ -1,0 +1,114 @@
+<div class="app-body">
+    <div layout="column" class="site">
+        <md-sidenav md-component-id="sideNav" class="md-sidenav-left siteNav">
+            <div layout="column">
+                <div layout="row" class="user-details imew-green" layout-align="center center">
+                    <div flex="33" class="avatar">
+                        <img gravatar-src="Body.userEmail" gravatar-size="100" gravatar-default="mm" class="circle responsive-img profile-image">
+                        <!--src="/imgs/sample-avatar.jpg" alt=""-->
+                    </div>
+                    <div flex="67" class="details">
+                        <!--<p class="username"><a class="profile-btn" href="#">{{ user.firstName }}</a></p>-->
+                        <p class="user-role" data-ng-if="Body.isAdmin">Administrator</p>
+                    </div>
+                </div>
+
+                <md-menu-content flex>
+
+                    <md-menu-item >
+                        <md-button data-ui-sref="body.opening" data-ng-click="Body.close()">
+                            <md-icon>today</md-icon><p>Scheduling</p>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item >
+                        <md-button data-ng-click="Body.close()">
+                            <md-icon>date_range</md-icon><p>Master Schedule</p>
+                        </md-button>
+                    </md-menu-item>
+                    
+
+                    <div class="divider" >
+                        <p>Admin</p>
+                    </div>
+
+                    <md-menu-item >
+                        <md-button data-ng-click="Body.close()">
+                            <md-icon>apps</md-icon><p>Admin Page</p>
+                        </md-button>
+                    </md-menu-item>
+
+
+                    <div class="divider">
+                        <p>Account</p>
+                    </div>
+
+                    <md-menu-item >
+                        <md-button >
+                            <md-icon>face</md-icon><p>Profile</p>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button data-ng-click="Body.logout()">
+                            <md-icon>keyboard_tab</md-icon><p>Logout</p>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </div>
+        </md-sidenav>
+        <header class="fixed-to-top full-width">
+            <md-toolbar>
+                <div class="md-toolbar-tools md-whiteframe-4dp" layout="row">
+                    <div id="nav-buttons">
+                        <md-button class="md-fab md-mini menu-icon" ng-click="Body.openNavigation()">
+                            <md-icon class="menu-icon">menu</md-icon>
+                        </md-button>
+                        <!--<md-button class="nav-button">-->
+                            <!--<md-tooltip md-direction="bottom" class="md-tooltip-nav">-->
+                                <!--Click to go back-->
+                            <!--</md-tooltip>-->
+                            <!--<md-icon data-ng-click="Body.browserBack()" class="navIcon">keyboard_arrow_left</md-icon>-->
+
+                        <!--</md-button>-->
+                        <!--<md-button class="nav-button">-->
+                            <!--<md-tooltip md-direction="bottom" class="md-tooltip-nav">-->
+                                <!--Click to go forward-->
+                            <!--</md-tooltip>-->
+                            <!--<md-icon data-ng-click="Body.browserForward()" class="navIcon">keyboard_arrow_right</md-icon>-->
+
+                        <!--</md-button>-->
+
+                        <!-- <img src="./imgs/imeworld-logo-wide-white.png"
+                                   class="brand-image"
+                                   alt="IME World"> -->
+                    </div>
+
+                    <span flex></span>
+                    <div class="page-title">
+                        <h2>{{ Body.pageTitle }}</h2>
+                    </div>
+                    <span flex></span>
+                    <md-button  class="admin-button" >
+                        <md-tooltip class="md-tooltip-nav">Admin panel</md-tooltip>
+                        <md-icon class="adminIcon">apps</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Fullscreen">
+                        <md-icon data-ng-click="Body.fullscreenToggle()" class="fullscreen-toggle">settings_overscan</md-icon>
+                        <md-tooltip class="md-tooltip-nav" md-direction="left">Full screen mode</md-tooltip>
+                    </md-button>
+                 </div>
+            </md-toolbar>
+        </header>
+        <md-progress-circular md-mode="{{ Body.loading }}" md-diameter="100" class="loading-spinner"></md-progress-circular>
+        <main class="site-content">
+            <ui-view>
+
+            </ui-view>
+        </main>
+        <footer class="page-footer" layout="row" layout-align="space between center">
+            <span class="footer-copyright">Copyright &copy; 2016 Education Leadership Foundation.</span>
+            <!--<span class="footer-credit">
+                Developed by <a class="grey-text text-lighten-5" href="http://shift3tech.com/" target="_blank">Shift3 Technologies</a>
+            </span>-->
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div layout="row" layout-align="center center" class="login">
+    <div layout="column" class="panel md-whiteframe-6dp margin-top-20" >
+        <div layout="row" layout-align="center center">
+            <img src="imgs/elf.png" alt="ELF">
+        </div>
+        <div layout="row" layout-align="center center">
+            <!--<h1>Sched It</h1>-->
+            <h2>Login</h2>
+        </div>
+        <form novalidate name="loginForm" data-ng-submit="Login.authenticate(Login.user)" >
+            <div layout="row">
+                <div layout="column" flex="15">
+                    <md-icon>person_outline</md-icon>
+                </div>
+                <div layout="column" flex="85">
+                    <md-input-container>
+                        <label for="email">Email</label>
+                        <input type="text"
+                               id="email"
+                               name="email"
+                               data-ng-required="true"
+                               aria-label="email"
+                               data-ng-model="Login.user.email">
+                        <div data-ng-messages="loginForm.email.$error">
+                            <div data-ng-message="required">
+                                email is required
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row">
+                <div layout="column" flex="15">
+                    <md-icon>lock_outline</md-icon>
+                </div>
+                <div layout="column" flex="85">
+                    <md-input-container>
+                        <label for="password">Password</label>
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               aria-label="Password"
+                               data-ng-required="true"
+                               data-ng-model="Login.user.password">
+                        <div data-ng-messages="loginForm.password.$error">
+                            <div data-ng-message="required">
+                                Password is required
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+           
+            <div layout="row"
+                 data-ng-if="Login.credInvalid">
+                <p class="danger">
+                    Invalid email or password. Please try again.
+                </p>
+            </div>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised md-primary"
+                           data-ng-disabled="loginForm.$invalid"
+                           type="submit"
+                           flex>Submit</md-button>
+            </div>
+        </form>
+        <div layout="row">
+            <a data-ui-sref="password-reset">Forgot Password?</a>
+        </div>
+    </div>
+</div>
